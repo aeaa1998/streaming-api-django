@@ -5,6 +5,7 @@ from artists.models import Artist
 from albums.models import Album
 from tracks.models import Track
 # Create your models here.
+
 class Favorite(PolymorphicModel):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="favorites")
     created_at = models.DateTimeField(auto_now_add=True, blank=True)

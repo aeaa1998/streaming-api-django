@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     birth_date = models.DateTimeField(auto_now_add=True, blank=True)
-    phonenumber = models.CharField(max_length=10)
+    phonenumber = models.CharField(max_length=10, null = True, blank=True)
     verified_at = models.DateTimeField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now_add=True, blank=True)

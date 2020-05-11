@@ -8,4 +8,4 @@ class Album(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now_add=True, blank=True)
     class Meta:
-            db_table = 'albums'
+        db_table = 'albums'

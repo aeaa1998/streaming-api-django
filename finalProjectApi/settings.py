@@ -26,7 +26,7 @@ SECRET_KEY = 'ynfmbxpqtkva^e@!jn*@7&iu97o4!u_bxzg6gjoj3ta51_lk@i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -104,7 +104,7 @@ JWT_AUTH = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'final-project-api',
+        'NAME': 'final-project-api',#nombre
         'USER': 'postgres',
         'PASSWORD': 'Diciembre98',
         'HOST': 'localhost',
