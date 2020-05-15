@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'tracks.apps.TracksConfig',
     'profiles.apps.ProfilesConfig',
     'favorites.apps.FavoritesConfig',
+    'playlists.apps.PlaylistsConfig',
+
 ]
 
 REST_FRAMEWORK = {
@@ -103,12 +105,23 @@ JWT_AUTH = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'final-project-api',#nombre
+
+        ##SETTINGS COMPU AUGUSTO
+
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'final-project-api',#nombre
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'Diciembre98',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432'
+
+        ## SETTINGS COMPU COU
+         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'streamingmusic',
         'USER': 'postgres',
-        'PASSWORD': 'Diciembre98',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'PASSWORD': 'Admin568.',
+        'HOST':'127.0.0.1',
+        'DATABASE_PORT': '54594',
     }
 }
 
