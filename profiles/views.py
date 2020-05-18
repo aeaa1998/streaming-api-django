@@ -3,9 +3,11 @@ from profiles.models import Profile
 from django.db import IntegrityError
 import json
 from rest_framework.request import Request
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from profiles.serializers import ProfileSerilializer
 from rest_framework.response import Response
+from django.contrib.auth.hashers import check_password
 from rest_framework.decorators import action
 from django.http import HttpResponse
 from rest_framework.views import APIView
@@ -15,14 +17,29 @@ class ProfileViewSet(viewsets.ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerilializer
     
-
-    def list(self, request):
+    @action(detail=False, url_path='user', methods=['get'])
+    def retrieveUser(self, request):
         try:
             profile =  Profile.objects.get(user__pk=request.user.id)
             serializer_context = {'request': Request(request._request)}
             return Response(ProfileSerilializer(profile, context=serializer_context).data)
         except (Exception) as e:
             return Response("user_does_not_have_profile", 404)
+
+    @action(detail=False, url_path='change/password', methods=['put'])
+    def changePassword(self, request):
+        try:
+            oldPassword = request.data['oldPassword']
+            newPassword = request.data['newPassword']
+            email = request.user.email
+            if check_password(oldPassword, request.user.password): 
+                request.user.set_password(newPassword)
+                request.user.save()
+                return Response('password_changed', 200)
+            else:
+                return Response('Invalid credentials', 499)
+        except (Exception) as e:
+            return Response("error", 405)
 
 
 class RegisterView(viewsets.ModelViewSet):
