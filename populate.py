@@ -95,7 +95,7 @@ def create_tracks (amountOfTracks):
 				name=myName,
 				price=myPrice,
 				seconds=mySeconds,
-				#explicit_lyrics=myExplicitLyrics,
+				explicit_lyrics=(random.randint(1,2) % 2),
 				album=Album.objects.get(id=myAlbum),
 				genre=Genre.objects.get(id=myGenre),
 				)
