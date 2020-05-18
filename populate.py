@@ -16,7 +16,6 @@ from tracks.models import Genre, Track
 # print(" currentTime = "+ currentTime)
 # datetime.strptime(currentTime, "%Y-%m-%d %H:%M:%S.%f")
 
-
 #generrates random artists
 def create_artist (amountOfArtists):
 	fake = Faker ()
@@ -26,12 +25,15 @@ def create_artist (amountOfArtists):
 		myBio= fake.text()
 		currentTime = datetime.now()
 
-		print (" Artist called : " + myName)
-		print( " BIO : "+ myBio)
+		# print (" Artist called : " + myName)
+		# print( " BIO : "+ myBio)
 		#print(" currentTime = "+ currentTime)
 		Artist.objects.create(name= myName, bio= myBio)
+		print( "-New artist created (X"+ str(x) +")")
 
-create_artist(0)
+
+amountOfArtists = int(input("How many artist do you want to generate? "))
+create_artist(amountOfArtists)
 
 ##generates random albums
 
@@ -43,14 +45,18 @@ def create_albums (amountOfAlbums):
 			myTitle = fake.text(25)
 			myPrice= random.uniform(0.99,15.99)
 			myArtist= random.randint(1,existingArtists)
-			print( " Album name " + myTitle)
-			print("Album Price: " + str(myPrice))
-			Album.objects.create(title=myTitle,price=myPrice,artist=Artist.objects.get(id=myArtist))
+			Album.objects.create(
+				title=myTitle,
+				price=myPrice,
+				artist=Artist.objects.get(id=myArtist)
+				)
+			print( "-New album created (X"+ str(x) +")")
 		except:
-			print("NO se pudo agregar un album")
+			print("**Colud not generate an album (" + str(x)+")")
+			
 
-create_albums(0)
-
+amountOfAlbums = int(input("How many Albums do you want to generate? "))
+create_albums(amountOfAlbums)
 
 ##generates random Tracks
 
@@ -62,7 +68,7 @@ def create_tracks (amountOfTracks):
 
 
 	for x in range (amountOfTracks):
-		#try:
+		try:
 			myName = fake.text(25)
 			myAlbum= random.randint(1,existingAlbums)
 			myArtist= random.randint(1,existingArtists)
@@ -80,8 +86,9 @@ def create_tracks (amountOfTracks):
 				album=Album.objects.get(id=myAlbum),
 				genre=Genre.objects.get(id=myGenre),
 				)
-			print("track agregada con exito ")
-		# except:
-		# 	print("NO se pudo agregar un Track")
+			print("-New track created (X"+ str(x) +")")
+		except:
+			print("**Could not generate a Track (" + str(x)+")")
 
-create_tracks(10)
+amountOfTracks = int(input("How many Tracks do you want to generate? "))
+create_tracks(amountOfTracks)
