@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'albums.apps.AlbumsConfig',
     'tracks.apps.TracksConfig',
     'profiles.apps.ProfilesConfig',
+    'playlists.apps.PlaylistsConfig',
     'favorites.apps.FavoritesConfig',
 ]
 

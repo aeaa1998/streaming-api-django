@@ -11,7 +11,7 @@ class Favorite(PolymorphicModel):
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now_add=True, blank=True)
     class Meta:
-            db_table = 'favorites'
+        db_table = 'favorites'
 
 class ArtistFavorite(Favorite):
     artist = models.ForeignKey(Artist, on_delete=models.PROTECT)
