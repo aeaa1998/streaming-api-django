@@ -6,6 +6,8 @@ from profiles.models import Profile
 class Playlist(models.Model):
 	name = models.CharField(max_length=50)
 	user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="playlists")
+	created_at = models.DateTimeField(auto_now_add=True, blank=True)
+	updated_at = models.DateTimeField(auto_now_add=True, blank=True)
 	class Meta:
 		db_table = 'playlists'
 	

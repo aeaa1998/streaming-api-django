@@ -32,9 +32,20 @@ def create_artist (amountOfArtists):
 		print( "-New artist created (X"+ str(x) +")")
 
 
+
 amountOfArtists = int(input("How many artist do you want to generate? "))
 create_artist(amountOfArtists)
 
+
+#generrates random genres
+def create_genres (number):
+	fake = Faker ()
+	for x in range (number):
+		genre= fake.name()
+		Genre.objects.create(name= genre)
+		print( "-New genre created")
+
+create_genres(int(input("How many genres do you want to generate? ")))
 ##generates random albums
 
 def create_albums (amountOfAlbums):
@@ -73,8 +84,10 @@ def create_tracks (amountOfTracks):
 			myAlbum= random.randint(1,existingAlbums)
 			myArtist= random.randint(1,existingArtists)
 			myGenre= random.randint(1,existingGenres)
+			print('here')
 			myPrice= random.uniform(0.99,15.99)
 			mySeconds = random.randint(120,500)
+			
 			#myExplicitLyrics= random.choice [0,1]
 
 
@@ -87,7 +100,8 @@ def create_tracks (amountOfTracks):
 				genre=Genre.objects.get(id=myGenre),
 				)
 			print("-New track created (X"+ str(x) +")")
-		except:
+		except Exception as e:
+			print(e)
 			print("**Could not generate a Track (" + str(x)+")")
 
 amountOfTracks = int(input("How many Tracks do you want to generate? "))
