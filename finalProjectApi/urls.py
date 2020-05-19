@@ -16,6 +16,7 @@ from rest_framework_jwt.views import (
 from albums.views import AlbumViewSet
 from playlists.views import PlaylistViewSet
 from tracks.views import TrackViewSet
+from favorites.views import FavoriteViewSet
 from profiles.views import ProfileViewSet
 from artists.views import ArtistViewSet
 from tracks.views import GenreViewSet
@@ -26,6 +27,7 @@ router.register(r'profiles', profileViews.ProfileViewSet)
 router.register(r'albums',AlbumViewSet)
 router.register(r'playlists',PlaylistViewSet)
 router.register(r'tracks',TrackViewSet)
+router.register(r'favorites',FavoriteViewSet)
 router.register(r'profiles',ProfileViewSet)
 router.register(r'artists',ArtistViewSet)
 router.register(r'genres',GenreViewSet)

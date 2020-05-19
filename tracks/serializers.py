@@ -28,6 +28,15 @@ class TrackFeatureSerializer(serializers.ModelSerializer):
 		model = TrackFeatures
 		fields = ['featured_artist']
 
+
+class TrackListSerializer(serializers.ModelSerializer):
+	album = AlbumByTrackSerializer()
+	features = TrackFeatureSerializer(many=True)
+	class Meta:
+		model = Track
+		fields = ['id', 'explicit_lyrics', 'price', 'name','album', 'genre_id', 'features']
+		
+
 class TrackByIdSerializer(serializers.ModelSerializer):
 	album = AlbumByTrackSerializer()
 	features = TrackFeatureSerializer(many=True)
