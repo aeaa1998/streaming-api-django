@@ -11,5 +11,4 @@ class Playlist(models.Model):
 	class Meta:
 		db_table = 'playlists'
 	
-	
-	 
+	  

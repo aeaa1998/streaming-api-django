@@ -15,16 +15,25 @@ class Favorite(PolymorphicModel):
 
 class ArtistFavorite(Favorite):
     artist = models.ForeignKey(Artist, on_delete=models.PROTECT)
+    @property
+    def favoriteType(self):
+        return 'artist'
     class Meta:
         db_table = 'favorite_artists'
 
 class AlbumFavorite(Favorite):
     album = models.ForeignKey(Album, on_delete=models.PROTECT)
+    @property
+    def favoriteType(self):
+        return 'album'
     class Meta:
         db_table = 'favorite_albums'
 
 class TrackFavorite(Favorite):
     track = models.ForeignKey(Track, on_delete=models.PROTECT)
+    @property
+    def favoriteType(self):
+        return 'track'
     class Meta:
         db_table = 'favorite_tracks'
 

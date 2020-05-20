@@ -1,5 +1,5 @@
 from rest_framework import viewsets , permissions
-from .serializers import TrackSerializer ,GenreSerializer, TrackByIdSerializer
+from .serializers import TrackSerializer ,GenreSerializer, TrackByIdSerializer, TrackListSerializer
 from tracks.models import Track, Genre
 from rest_framework.response import Response
 from rest_framework.request import Request
@@ -24,7 +24,7 @@ class TrackViewSet(viewsets.ModelViewSet):
 		rand_entities = random.sample(range(numberTracks), 20)
 		tracks =  Track.objects.filter(pk__in=rand_entities)
 		serializer_context = {'request': Request(request._request)}
-		return Response(TrackByIdSerializer(tracks, many= True,context=serializer_context).data)
+		return Response(TrackListSerializer(tracks, many= True,context=serializer_context).data)
 
 	def retrieve(self, request, pk):
 		track =  Track.objects.get(pk=pk)
