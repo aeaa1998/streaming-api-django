@@ -9,6 +9,11 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class ProfileSerilializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ['id', 'phonenumber', 'created_at']
+
+class ProfileWithUserSerilializer(serializers.HyperlinkedModelSerializer):
     user = UserSerializer()
     class Meta:
         model = Profile

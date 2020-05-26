@@ -9,8 +9,9 @@ from rest_framework import routers, serializers, viewsets
 router = routers.DefaultRouter()
 from rest_framework_jwt.views import (
     obtain_jwt_token,
-    refresh_jwt_token
+    # refresh_jwt_token
 )
+from authentication.views import ( refresh_jwt_token )
 
 
 from albums.views import AlbumViewSet

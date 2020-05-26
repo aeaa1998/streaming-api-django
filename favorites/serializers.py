@@ -3,7 +3,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from favorites.models import Favorite, ArtistFavorite, AlbumFavorite, TrackFavorite
 from artists.serializers import ArtistSerializer
-from tracks.serializers import TrackSerializer
+from tracks.serializers import TrackListSerializer
 from profiles.serializers import UserSerializer
 from rest_polymorphic.serializers import PolymorphicSerializer
 from albums.serializers import AlbumSerializer
@@ -31,7 +31,7 @@ class AlbumFavoriteSerializer(serializers.ModelSerializer):
         fields = ['id','album', 'user']
 
 class TrackFavoriteSerializer(serializers.ModelSerializer):
-    track = TrackSerializer()
+    track = TrackListSerializer()
     user = UserSerializer()
     class Meta:
         model = TrackFavorite

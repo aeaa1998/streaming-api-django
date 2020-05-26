@@ -5,7 +5,7 @@ import json
 from rest_framework.request import Request
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from profiles.serializers import ProfileSerilializer
+from profiles.serializers import ProfileSerilializer, ProfileWithUserSerilializer
 from rest_framework.response import Response
 from django.contrib.auth.hashers import check_password
 from rest_framework.decorators import action
@@ -22,7 +22,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
         try:
             profile =  Profile.objects.get(user__pk=request.user.id)
             serializer_context = {'request': Request(request._request)}
-            return Response(ProfileSerilializer(profile, context=serializer_context).data)
+            return Response(ProfileWithUserSerilializer(profile, context=serializer_context).data)
         except (Exception) as e:
             return Response("user_does_not_have_profile", 404)
 
