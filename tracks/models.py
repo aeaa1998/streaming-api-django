@@ -1,7 +1,7 @@
 from django.db import models
 from albums.models import Album
 from artists.models import Artist
-
+from playlists.models import Playlist
 
 # Create your models here.
 class Genre(models.Model):
@@ -20,6 +20,7 @@ class Track(models.Model):
     explicit_lyrics = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now_add=True, blank=True)
+    playlists = models.ManyToManyField(Playlist, blank=True)
     class Meta:
             db_table = 'tracks'
 
