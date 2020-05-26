@@ -96,7 +96,7 @@ WSGI_APPLICATION = 'finalProjectApi.wsgi.application'
 JWT_AUTH = {
     'JWT_ALLOW_REFRESH': True,
     'JWT_RESPONSE_PAYLOAD_HANDLER':'authentication.utils.jwt_response_payload_handler',
-    'JWT_EXPIRATION_DELTA': timedelta(seconds=30),
+    'JWT_EXPIRATION_DELTA': timedelta(seconds=10000),
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=78),
 }
 
