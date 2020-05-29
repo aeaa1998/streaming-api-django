@@ -49,7 +49,8 @@ def createGenres () :
 #generrates random genres
 
 if (len( Genre.objects.all())== 0 ):
-	createGenres
+	createGenres()
+	print("just Created all the Genres")
 else:
 	print("It seems like Genres already exist")
 
