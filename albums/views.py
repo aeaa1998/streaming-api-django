@@ -20,12 +20,12 @@ class AlbumViewSet(viewsets.ModelViewSet):
 	def listByGenre(self, request):
 		genres = Genre.objects.all()
 		firstCat = {
-			'id': 0, 'name': 'Todos los albums', 'albums': self.queryset[:20]
+			'id': 0, 'name': 'Todos los ', 'albums': self.queryset[:20]
 		}
 		albums = [firstCat]
 		for genre in genres:
 			# nextCat = {'id': genre.id, 'name': genre.name, 'artists': self.queryset.filter(albums__tracks__genre__pk=genre.id).distinct()[:20]}
-			nextCat = {'id': genre.id, 'name': 'Genero'+str(genre.id), 'albums': self.queryset.filter(tracks__genre__pk=genre.id).distinct()[:20]}
+			nextCat = {'id': genre.id, 'name': genre.name, 'albums': self.queryset.filter(tracks__genre__pk=genre.id).distinct()[:20]}
 			albums.append(nextCat)
 		serializer_context = {'request': Request(request._request)}
 		return Response(AlbumByGenreSerializer(albums, many=True, context=serializer_context).data, 200)
