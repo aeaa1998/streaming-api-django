@@ -25,10 +25,9 @@ class ArtistByIdSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Artist
 		fields = ['id', 'name', 'bio', 'albums']
-		
+
 class ArtistByGenreSerializer(serializers.ModelSerializer):
 	artists = ArtistSerializer(many=True)
 	class Meta:
 		model = Genre
 		fields = ['id', 'name', 'artists']
-		

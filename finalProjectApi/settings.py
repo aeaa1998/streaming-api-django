@@ -36,6 +36,7 @@ AUTHENTICATION_BACKENDS = (
     'guardian.backends.ObjectPermissionBackend',
 )
 INSTALLED_APPS = [
+    'guardian',
     'polymorphic',
     'django.contrib.admin',
     'django.contrib.auth',

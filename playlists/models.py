@@ -11,5 +11,6 @@ class Playlist(models.Model):
 	tracks = models.ManyToManyField(Track, blank=True, related_name="playlist")
 	class Meta:
 		db_table = 'playlists'
+		default_permissions = ('add', 'change', 'delete')
 	
 	  
