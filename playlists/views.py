@@ -50,7 +50,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
 	@action(detail=False, url_path='add/track/(?P<pk>\d+)', methods=['post'])
 	def addTrack(self, request, pk):
 		playlist = Playlist.objects.get(pk=pk)
-		if request.user.has_perm('change_playlist', playlist)
+		if request.user.has_perm('change_playlist', playlist):
 			track = request.data['track']
 			playlist.tracks.add(track)
 			return Response("Successfully added track", 200)
@@ -59,7 +59,7 @@ class PlaylistViewSet(viewsets.ModelViewSet):
 	@action(detail=False, url_path='delete/track/(?P<pk>\d+)', methods=['delete'])
 	def deleteTrack(self, request, pk):
 		playlist = Playlist.objects.get(pk=pk)
-		if request.user.has_perm('change_playlist', playlist)
+		if request.user.has_perm('change_playlist', playlist):
 			track = request.data['track']
 			playlist.tracks.remove(track)
 			return Response("Successfully deleted track", 200)

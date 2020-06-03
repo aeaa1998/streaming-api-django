@@ -10,15 +10,19 @@ from rest_framework.decorators import action
 class ArtistViewSet(viewsets.ModelViewSet):
 	queryset = Artist.objects.all()
 	serializer_class = ArtistSerializer
+	# permission_classes= [
+	#   permissions.AllowAny
+	# ]
 	
 	@action(detail=False, url_path='by/genres', methods=['get'])
 	def listByGenre(self, request):
 		genres = Genre.objects.all()
 		firstCat = {
-			'id': 0, 'name': 'Todos los artistas', 'artists': self.queryset[:20]
+			'id': 0, 'name': 'toda clase', 'artists': self.queryset[:20]
 		}
 		artists = [firstCat]
 		for genre in genres:
+			# nextCat = {'id': genre.id, 'name': genre.name, 'artists': self.queryset.filter(albums__tracks__genre__pk=genre.id).distinct()[:20]}
 			nextCat = {'id': genre.id, 'name': genre.name, 'artists': self.queryset.filter(albums__tracks__genre__pk=genre.id).distinct()[:20]}
 			artists.append(nextCat)
 		serializer_context = {'request': Request(request._request)}

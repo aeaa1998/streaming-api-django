@@ -3,6 +3,8 @@ from artists.models import Artist
 from tracks.models import Genre, Track
 from albums.models import Album
 
+# from albums.serializers import AlbumSerializer
+
 class TrackSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Track
@@ -12,6 +14,13 @@ class ArtistSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Artist
 		fields = '__all__'
+
+
+class AlbumSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = Album
+		fields = '__all__'
+		#fields = ['id','title']
 
 
 class AlbumByIdSerializer(serializers.ModelSerializer):
@@ -31,3 +40,13 @@ class ArtistByGenreSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Genre
 		fields = ['id', 'name', 'artists']
+
+		
+
+class AlbumByGenreSerializer(serializers.ModelSerializer):
+	albums = AlbumSerializer(many=True)
+	class Meta:
+		model = Genre
+		fields = ['id', 'name', 'albums']
+		
+

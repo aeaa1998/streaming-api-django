@@ -113,6 +113,12 @@ DATABASES = {
         'PASSWORD': 'Diciembre98',
         'HOST': 'localhost',
         'PORT': '5432'
+        # 'ENGINE':'django.db.backends.postgresql_psycopg2',
+        # 'NAME':'streamingmusic',
+        # 'USER':'postgres',
+        # 'PASSWORD':'Admin568.',
+        # 'HOST':'127.0.0.1',
+        # 'DATABASE_PORT':'53139',
     }
 }
 
