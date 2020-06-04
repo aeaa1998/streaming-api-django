@@ -20,7 +20,7 @@ class AlbumViewSet(viewsets.ModelViewSet):
 	def listByGenre(self, request):
 		genres = Genre.objects.all()
 		firstCat = {
-			'id': 0, 'name': 'Todos los ', 'albums': self.queryset[:20]
+			'id': 0, 'name': 'todos los generos', 'albums': self.queryset[:20]
 		}
 		albums = [firstCat]
 		for genre in genres:

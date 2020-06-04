@@ -82,6 +82,11 @@ def create_albums (amountOfAlbums):
 					myName = fake.text(25)				
 					myPrice2= myPrice / amountOfTracks
 					mySeconds = random.randint(120,500)
+					#explicit = random.randomint(0,8)
+					if(random.randint(0,8)==1):
+						myExplicitLyrics = 1
+					else:
+						myExplicitLyrics =0
 					#myExplicitLyrics= random.choice [0,1]
 
 					Track.objects.create(
@@ -90,6 +95,7 @@ def create_albums (amountOfAlbums):
 						seconds=mySeconds,
 						album=Album.objects.get(id=myAlbumId),
 						genre=Genre.objects.get(id=myGenre),
+						explicit_lyrics = myExplicitLyrics,
 						)
 					print("        -New track created (X"+ str(x) +")")
 				except Exception as e:
