@@ -120,7 +120,6 @@ class RefreshJSONWebTokenSerializer(VerificationBaseSerializer):
 
     def validate(self, attrs):
         token = attrs['token']
-
         payload = self._check_payload(token=token)
         user = self._check_user(payload=payload)
         # Get and check 'orig_iat'

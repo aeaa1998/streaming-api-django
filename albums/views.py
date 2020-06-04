@@ -1,6 +1,7 @@
 from rest_framework import viewsets , permissions
 #from .serializers import AlbumSerializer
-from artists.serializers import AlbumByIdSerializer , AlbumByGenreSerializer , AlbumSerializer
+from artists.serializers import AlbumByGenreSerializer , AlbumSerializer
+from albums.serializers import AlbumByIdSerializer
 from albums.models import Album
 from tracks.models import Genre
 from rest_framework.response import Response
