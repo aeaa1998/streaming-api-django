@@ -12,6 +12,11 @@ class FavoriteViewSet(viewsets.ModelViewSet):
 	queryset = Favorite.objects.all()
 	serializer_class = FavoritePolymorphicSerializer
 
+	def list(self, request):
+		favoritesAll = Favorite.objects.filter(user__pk=request.user.id)
+		serializer_context = {'request': Request(request._request)}
+		return Response(self.serializer_class(favoritesAll, many=True, context=serializer_context).data, 200)
+
 	def create(self, request):
 		request.data['user'] = request.user.id
 		serializer = FavoritePolymorphicSerializerCreate(data=request.data)

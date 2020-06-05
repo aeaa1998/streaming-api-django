@@ -20,7 +20,7 @@ class ProfileWithUserSerilializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'user', 'phonenumber', 'created_at']
 
 class UserSerializerWithProfileFormat(serializers.HyperlinkedModelSerializer):
-    profile = ProfileSerilializer()
+    profile = ProfileWithUserSerilializer()
     class Meta:
         model = User
         fields = ['profile']
