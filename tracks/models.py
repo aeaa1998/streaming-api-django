@@ -17,7 +17,7 @@ class Track(models.Model):
     genre = models.ForeignKey(Genre, on_delete=models.PROTECT, related_name="tracks")
     price = models.FloatField(default=0.99)
     seconds = models.IntegerField(default=180)
-    explicit_lyrics = models.IntegerField(default=1)
+    explicit_lyrics = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     updated_at = models.DateTimeField(auto_now_add=True, blank=True)
     class Meta:

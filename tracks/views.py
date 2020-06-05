@@ -10,6 +10,7 @@ import random
 class TrackViewSet(viewsets.ModelViewSet):
 	queryset = Track.objects.all()
 	serializer_class = TrackSerializer
+	
 
 	def list(self, request):
 		numberTracks =  Track.objects.all().count()

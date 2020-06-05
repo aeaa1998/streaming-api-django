@@ -17,17 +17,21 @@ class ArtistSerializer(serializers.ModelSerializer):
 
 
 class AlbumSerializer(serializers.ModelSerializer):
+	artist = ArtistSerializer()
+	tracks = TrackSerializer(many=True)
 	class Meta:
 		model = Album
-		fields = '__all__'
+		fields = ['id', 'title', 'price', 'created_at','artist','tracks']
+		#fields = ['__all__', 'artist']
 		#fields = ['id','title']
 
 
 class AlbumByIdSerializer(serializers.ModelSerializer):
 	tracks = TrackSerializer(many=True)
+	artist = ArtistSerializer()
 	class Meta:
 		model = Album
-		fields = ['id', 'title', 'price', 'created_at', 'tracks']
+		fields = ['id', 'title', 'price', 'created_at','artist','tracks']
 
 class ArtistByIdSerializer(serializers.ModelSerializer):
 	albums = AlbumByIdSerializer(many=True)
